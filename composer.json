@@ -1,0 +1,22 @@
+{
+    "name": "ituaakhator/slim-inertia-template",
+    "description": "Slim Inertia",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "InertiaAdapter\\": "inertia/"
+        }
+    },
+    "authors": [
+        {
+            "name": "iakhator",
+            "email": "iakhator@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^4.14",
+        "slim/psr7": "^1.7",
+        "slim/twig-view": "^3.4",
+        "php-di/php-di": "^7.0"
+    }
+}
