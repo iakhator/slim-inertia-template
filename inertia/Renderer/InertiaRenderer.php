@@ -4,6 +4,8 @@ namespace InertiaAdapter\Renderer;
 
 use InertiaAdapter\Contracts\TemplateRendererInterface;
 
+use Psr\Http\Message\ResponseInterface as Response;
+
 class InertiaRenderer
 {
     protected TemplateRendererInterface $templateEngine;
@@ -14,10 +16,10 @@ class InertiaRenderer
         $this->templateEngine = $templateEngine;
     }
 
-    public function render(string $component, array $props = []): string
+    public function render(Response $response, string $component, array $props = []): Response
     {
         $finalProps = array_merge($this->sharedProps, $props);
-        return $this->templateEngine->render($component, $finalProps);
+        return $this->templateEngine->render($response, $component, $finalProps);
     }
 
     public function share(array $props): void

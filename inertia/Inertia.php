@@ -5,6 +5,8 @@ namespace InertiaAdapter;
 use InertiaAdapter\Renderer\InertiaRenderer;
 use InertiaAdapter\Response\InertiaResponse;
 
+use Psr\Http\Message\ResponseInterface as Response;
+
 class Inertia
 {
     private static ?InertiaRenderer $renderer = null;
@@ -16,12 +18,12 @@ class Inertia
         self::$response = $response;
     }
 
-    public static function render(string $component, array $props = []): string
+    public static function render(Response $response, string $component, array $props = []): Response
     {
         if (!self::$renderer) {
             throw new \RuntimeException("Inertia renderer is not set. Call Inertia::setUp() first.");
         }
-        return self::$renderer->render($component, $props);
+        return self::$renderer->render($response, $component, $props);
     }
 
     public static function redirect(string $url, int $status = 302): InertiaResponse

@@ -6,5 +6,18 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     outDir: '../public/dist',
+    manifest: true,
+    rollupOptions: {
+      input: {
+        main: './src/main.ts',
+      },
+    },
+  },
+  server: {
+    strictPort: true,
+    origin: 'http://localhost:8080',
+    // hmr: {
+    //   host: 'localhost'
+    // }
   }
 })

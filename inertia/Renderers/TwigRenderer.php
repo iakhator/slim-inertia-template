@@ -5,6 +5,8 @@ namespace InertiaAdapter\Renderers;
 use Slim\Views\Twig;
 use InertiaAdapter\Contracts\TemplateRendererInterface;
 
+use Psr\Http\Message\ResponseInterface as Response;
+
 class TwigRenderer implements TemplateRendererInterface
 {
     protected Twig $twig;
@@ -14,14 +16,17 @@ class TwigRenderer implements TemplateRendererInterface
         $this->twig = $twig;
     }
 
-    public function render(string $component, array $props = []): string
+    public function render(Response $response, string $component, array $props = []): Response
     {
-        return $this->twig->fetch('app.twig', [
-            'page' => [
-                'component' => $component,
-                'props' => $props,
-                'url' => $_SERVER['REQUEST_URI']
-            ]
-        ]);
+
+      $pageData = [
+        'component' => $component,
+        'props' => $props,
+        'url' => $_SERVER['REQUEST_URI']
+    ];
+
+        return $this->twig->render($response, 'app.html.twig', [
+            'page' => json_encode($pageData)
+        ])->withHeader('X-Inertia', 'true');
     }
 }

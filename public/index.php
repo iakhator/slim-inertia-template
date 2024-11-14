@@ -6,12 +6,12 @@ use InertiaAdapter\InertiaFactory;
 use InertiaAdapter\Renderers\TwigRenderer;
 use InertiaAdapter\Inertia;
 
-require 'vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
 
 // Set up Twig for rendering
-$twig = Twig::create(__DIR__ . '/src/views');
+$twig = Twig::create(__DIR__ . '/../src/views');
 $twigRenderer = new TwigRenderer($twig);
 
 // Initialize Inertia
@@ -27,8 +27,9 @@ Inertia::share([
 ]);
 
 // Include routes from a separate file
-$routes = require __DIR__ . '/App/routes.php';
-$routes($app);
+
+// Load routes
+(require __DIR__ . '/../app/routes.php')($app);
 
 // Run the app
 $app->run();
