@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inertia App</title>
-    <script type="module" src="http://localhost:5173/@vite/client"></script>
-    <script type="module" src="http://localhost:5173/src/main.ts"></script> 
+    {% if app.environment == 'development' %}
+        <script type="module" src="http://localhost:5173/@vite/client"></script>
+        <script type="module" src="http://localhost:5173/src/main.ts"></script> 
+    {% endif %}
+    
 </head>
 <body>
     <div id="app" data-page="{{ page }}"></div>
