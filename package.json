@@ -1,0 +1,16 @@
+{
+  "name": "slim_inertia_template",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "serve": "vite"
+  },
+  "dependencies": {
+    "vue": "^3.5.12"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.0",
+    "concurrently": "^9.0.1",
+    "vite": "^5.4.11"
+  }
+}
