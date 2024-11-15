@@ -1,17 +1,28 @@
 <script setup lang="ts">
+
+import { router } from '@inertiajs/vue3';
+
 import HelloWorld from '../components/HelloWorld.vue'
+
+function handleClick() {
+  router.post('/login', {'first_name': 'John Doe'})
+}
+
+
 </script>
 
 <template>
   <div>
     <a href="https://vite.dev" target="_blank">
-      <img src="../assets/vite.svg" class="logo" alt="Vite logo" />
+      <img src="/assets/vite.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://vuejs.org/" target="_blank">
-      <img src="../assets/vue.svg" class="logo vue" alt="Vue logo" />
+      <img src="/assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+
+  <button @click="handleClick">click me</button>
 </template>
 
 <style scoped>

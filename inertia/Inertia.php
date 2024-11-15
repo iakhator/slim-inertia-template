@@ -34,6 +34,14 @@ class Inertia
         return self::$response->redirect($url, $status);
     }
 
+    public static function direct(Response $response, string $url, string $component): InertiaResponse
+    {
+        if (!self::$response) {
+            throw new \RuntimeException("Inertia response is not set. Call Inertia::setUp() first.");
+        }
+        return self::$response->direct($response, $url, $component);
+    }
+
     public static function share(array $props): void
     {
         if (!self::$renderer) {

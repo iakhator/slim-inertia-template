@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
 
 // https://vite.dev/config/
@@ -9,7 +10,7 @@ export default defineConfig({
     manifest: true,
     rollupOptions: {
       input: {
-        main: './src/main.ts',
+        main: '/main.ts',
       },
     },
   },
@@ -19,5 +20,13 @@ export default defineConfig({
     // hmr: {
     //   host: 'localhost'
     // }
-  }
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
+    },
+  },
+  // Configure asset handling
+  // publicDir: 'src',
+  // base: '/',
 })
