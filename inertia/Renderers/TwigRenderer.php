@@ -22,7 +22,8 @@ class TwigRenderer implements TemplateRendererInterface
       $pageData = [
         'component' => $component,
         'props' => $props,
-        'url' => $_SERVER['REQUEST_URI']
+        'url' => $_SERVER['REQUEST_URI'],
+        'version' => '1.0'
     ];
 
         return $this->twig->render($response, 'app.html.twig', [

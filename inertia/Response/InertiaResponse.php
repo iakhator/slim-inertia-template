@@ -8,18 +8,7 @@ use Slim\Psr7\Response;
 
 class InertiaResponse extends Response
 {
-    public function redirect(string $url, int $status = 302): ResponseInterface
-    {   
-
-        if (isset($_SERVER['HTTP_X_INERTIA'])) {
-            var_dump('I got here');
-            return $this->withHeader('X-Inertia-Location', $url)->withStatus($status);
-        } else {
-            return $this->withHeader('Location', $url)->withStatus($status);
-        }
-    }
-
-    public function direct(Response $response, string $url, string $component): ResponseInterface
+    public function redirect(Response $response, string $url, string $component): ResponseInterface
     {
         
         if (isset($_SERVER['HTTP_X_INERTIA'])) {
