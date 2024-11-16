@@ -8,7 +8,7 @@ use Slim\Psr7\Response;
 
 class InertiaResponse extends Response
 {
-    public function redirect(Response $response, string $url, string $component): ResponseInterface
+    public function redirect(string $url, string $component): ResponseInterface
     {
         
         if (isset($_SERVER['HTTP_X_INERTIA'])) {

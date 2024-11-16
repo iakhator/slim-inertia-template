@@ -26,8 +26,9 @@ class HomeController
         return Inertia::render($response, 'Dashboard', $props);
     }
 
-    public function login(Request $request, Response $response): Response
+    public function login(Request $request): Response
     {
-       return Inertia::redirect($response, '/dashboard', 'Dashboard');
+
+       return Inertia::redirect('/dashboard', 'Dashboard');
     }
 }
