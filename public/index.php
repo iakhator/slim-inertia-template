@@ -4,11 +4,13 @@ use Dotenv\Dotenv;
 use DI\Container;
 use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
+use Twig\TwigFunction;
 use InertiaAdapter\InertiaFactory;
 use InertiaAdapter\Renderers\TwigRenderer;
 use InertiaAdapter\Inertia;
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../app/helpers.php';
 
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
@@ -21,6 +23,11 @@ $app = AppFactory::create();
 // Set up Twig for rendering and add it to the container
 $twig = Twig::create(__DIR__ . '/../src/views', ['cache' => false]);
 $container->set(Twig::class, $twig); // Register Twig in the container first
+
+$twig->getEnvironment()->addFunction(new TwigFunction('vite', function ($asset) {
+    return vite($asset);
+}));
+
 
 // Add global environment variables to Twig
 $container->get(Twig::class)->getEnvironment()->addGlobal('app', [
