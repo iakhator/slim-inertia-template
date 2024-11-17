@@ -30,7 +30,9 @@ class Inertia
     {
         if (!self::$response) {
             throw new \RuntimeException("Inertia response is not set. Call Inertia::setUp() first.");
+
         }
+        var_dump(self::$renderer);
         return self::$response->redirect($url, $component);
     }
 

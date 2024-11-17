@@ -13,7 +13,7 @@ class InertiaShared
   {
       Inertia::share([
           'auth' => [
-              'user' => $_SESSION['user'] ?? null, // Example: user data from session
+              'user' => $_SESSION['user'] ?? null,
           ],
           'flash' => [
               'message' => $_SESSION['flash_message'] ?? null,

@@ -38,16 +38,16 @@ $container->get(Twig::class)->getEnvironment()->addGlobal('app', [
 
 // Initialize Inertia with the Twig renderer
 $twigRenderer = new TwigRenderer($twig);
-InertiaFactory::initialize($twigRenderer);
+InertiaFactory::initialize($twigRenderer, $app);
 
-// Share common props across all pages
-Inertia::share([
-    'appName' => 'My Vue App',
-    'user' => [
-        'name' => 'John Doe',
-        'role' => 'Admin'
-    ],
-]);
+// // Share common props across all pages
+// Inertia::share([
+//     'appName' => 'My Vue App',
+//     'user' => [
+//         'name' => 'John Doe',
+//         'role' => 'Admin'
+//     ],
+// ]);
 
 // Load routes
 (require __DIR__ . '/../app/routes.php')($app);
