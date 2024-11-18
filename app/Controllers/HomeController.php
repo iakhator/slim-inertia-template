@@ -29,6 +29,6 @@ class HomeController
     public function login(Request $request): Response
     {
 
-       return Inertia::redirect('/dashboard', 'Dashboard');
+       return Inertia::redirect('/dashboard', 'Dashboard', ['name' => "Redirect From Home"]);
     }
 }

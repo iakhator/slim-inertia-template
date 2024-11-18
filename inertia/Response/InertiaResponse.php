@@ -3,18 +3,28 @@
 namespace InertiaAdapter\Response;
 
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Psr7\Response;
+use InertiaAdapter\Renderer\InertiaRenderer;
 
 class InertiaResponse extends Response
 {
-    public function redirect(string $url, string $component): ResponseInterface
+
+    private InertiaRenderer $renderer;
+
+    public function __construct(InertiaRenderer $renderer) 
+    {
+        parent::__construct();
+        $this->renderer = $renderer;
+    }
+
+    public function redirect(string $url, string $component, array $props = []): ResponseInterface
     {
         
         if (isset($_SERVER['HTTP_X_INERTIA'])) {
+            $sharedProps = $this->renderer->getSharedProps();
             $payload = [
                 'component' => $component, 
-                // 'props' => array_merge(self::$sharedProps, $props),
+                'props' => array_merge($sharedProps, $props),
                 'url' => $url,
                 'version' => '1.0',
             ];

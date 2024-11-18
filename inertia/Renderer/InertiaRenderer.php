@@ -26,4 +26,9 @@ class InertiaRenderer
     {
         $this->sharedProps = array_merge($this->sharedProps, $props);
     }
+
+    public function getSharedProps(): array
+    {
+        return $this->sharedProps;
+    }
 }

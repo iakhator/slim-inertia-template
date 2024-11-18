@@ -14,7 +14,7 @@ class InertiaFactory
     public static function initialize(TemplateRendererInterface $templateRenderer, App $app): void
     {
         $inertiaRenderer = new InertiaRenderer($templateRenderer);
-        $inertiaResponse = new InertiaResponse();
+        $inertiaResponse = new InertiaResponse($inertiaRenderer);
 
         Inertia::setUp($inertiaRenderer, $inertiaResponse);
 

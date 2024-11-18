@@ -26,14 +26,13 @@ class Inertia
         return self::$renderer->render($response, $component, $props);
     }
 
-    public static function redirect(string $url, string $component): InertiaResponse
+    public static function redirect(string $url, string $component, array $props = []): InertiaResponse
     {
         if (!self::$response) {
             throw new \RuntimeException("Inertia response is not set. Call Inertia::setUp() first.");
 
         }
-        var_dump(self::$renderer);
-        return self::$response->redirect($url, $component);
+        return self::$response->redirect($url, $component, $props);
     }
 
     public static function share(array $props): void
